@@ -118,6 +118,9 @@ Pin connection details
 3.  Open Firmware.ino file.
 4.  Upload the code to your Arduino MEGA.
 5.  Now connect the battery to the ESCs and use dashboard to move the motors.
+6.  Dashbaord Link: https://nodered-proxy.production.wrapdrive.tech/ui/
+
+![Webapp](artwork/webapp.png)
 
 ## List of Components <a name = "list"></a>
 

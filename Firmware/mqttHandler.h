@@ -121,7 +121,7 @@ void mqttCallback(char *topic, byte *payload, unsigned int len)
     // Only proceed if incoming message's topic matches
     if (String(topic) == topicPosition)
     {
-        if (pLoad == String("forward"))
+        if (pLoad == String("up"))
         {
             forward();
         }
@@ -133,7 +133,7 @@ void mqttCallback(char *topic, byte *payload, unsigned int len)
         {
             right();
         }
-        else if (pLoad == String("stop"))
+        else if (pLoad == String("down"))
         {
             stop();
         }
@@ -141,6 +141,18 @@ void mqttCallback(char *topic, byte *payload, unsigned int len)
     else if (String(topic) == topicSpeed)
     {
         speed = pLoad.toInt();
+    }
+    else if (string(topic) == topicLedStatus)
+    {
+        if (pLoad == String("on"))
+        {
+            digitalWrite(LED_PIN, HIGH);
+        }
+        else
+        {
+
+            digitalWrite(LED_PIN, LOW);
+        }
     }
 }
 
