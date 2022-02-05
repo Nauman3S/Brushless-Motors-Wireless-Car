@@ -75,11 +75,11 @@ const char *topicInit = "GsmClientTest/ledStatus";
 String pos1;
 String pos2;
 
-String getJoystick1(){
-    return pos1;
+float getJoystick1(){
+    return pos1.toFloat();
 }
-String getJoystick2(){
-    return pos2;
+float getJoystick2(){
+    return pos2.toFloat();
 }
 
 #include <TinyGsmClient.h>

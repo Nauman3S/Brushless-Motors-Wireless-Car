@@ -1,40 +1,15 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "639b5434064fa5cd",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "11b312606f854e19",
-        "type": "ui_joystick",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "group": "75e0de12f03e09f3",
-        "order": 2,
-        "width": 3,
-        "height": 3,
-        "trigger": "all",
-        "timeInterval": 0,
-        "useThemeColor": true,
-        "color": "#000000",
-        "threshold": 0.1,
-        "directions": "all",
-        "shape": "circle",
-        "centerAtRelease": true,
-        "x": 470,
-        "y": 200,
-        "wires": [
-            [
-                "2468bcee5e2cca1f"
-            ]
-        ]
-    },
-    {
-        "id": "18c6dabcfc8be2a6",
+        "id": "9451bbed0ad452d5",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -43,39 +18,39 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1150,
-        "y": 240,
+        "x": 1110,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "2468bcee5e2cca1f",
+        "id": "1c51586cc5843e98",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "Direction",
-        "func": "g=msg.payload;\n\nmsg.payload=g['direction']['angle'];\nreturn msg;",
+        "z": "639b5434064fa5cd",
+        "name": "ParseAngleDirection",
+        "func": "var g;\ntry {\n  g=msg.payloadL.degree;\n  msg.payload=g\n    return msg;\n}\ncatch(err) {\n}\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 680,
-        "y": 240,
+        "y": 160,
         "wires": [
             [
-                "18c6dabcfc8be2a6",
-                "7f9c929bc191159e"
+                "9451bbed0ad452d5",
+                "20b6ee4e9066846c"
             ]
         ]
     },
     {
-        "id": "5c1387e9418bbee9",
+        "id": "8cc6797632e67e66",
         "type": "ui_numeric",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "label": "ESC Speed",
         "tooltip": "",
         "group": "75e0de12f03e09f3",
-        "order": 8,
+        "order": 12,
         "width": 0,
         "height": 0,
         "wrap": false,
@@ -91,17 +66,17 @@
         "y": 440,
         "wires": [
             [
-                "d729aaf6a3e3f645"
+                "22552534487259a5"
             ]
         ]
     },
     {
-        "id": "2ecbd70cf814dd7f",
+        "id": "d8657deb53d8b7d9",
         "type": "ui_button",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "group": "75e0de12f03e09f3",
-        "order": 10,
+        "order": 14,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -115,18 +90,18 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 470,
-        "y": 280,
+        "x": 550,
+        "y": 220,
         "wires": [
             [
-                "7f9c929bc191159e"
+                "20b6ee4e9066846c"
             ]
         ]
     },
     {
-        "id": "d729aaf6a3e3f645",
+        "id": "22552534487259a5",
         "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "topic": "brushlessCar/speed",
         "qos": "0",
@@ -137,14 +112,14 @@
         "correl": "",
         "expiry": "",
         "broker": "28f7ceb9.8189a2",
-        "x": 750,
-        "y": 460,
+        "x": 740,
+        "y": 440,
         "wires": []
     },
     {
-        "id": "7f9c929bc191159e",
+        "id": "20b6ee4e9066846c",
         "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "topic": "brushlessCar/position",
         "qos": "0",
@@ -155,19 +130,19 @@
         "correl": "",
         "expiry": "",
         "broker": "28f7ceb9.8189a2",
-        "x": 960,
-        "y": 300,
+        "x": 920,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "7aebc83d480f6379",
+        "id": "0c5472c27a793e4a",
         "type": "ui_switch",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "label": "Arduino On-board LED",
         "tooltip": "",
         "group": "75e0de12f03e09f3",
-        "order": 9,
+        "order": 13,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -189,14 +164,14 @@
         "y": 580,
         "wires": [
             [
-                "a5f92faefcfbee46"
+                "b3557a5dcd1b5cbc"
             ]
         ]
     },
     {
-        "id": "a5f92faefcfbee46",
+        "id": "b3557a5dcd1b5cbc",
         "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "",
         "topic": "GsmClientTest/ledStatus",
         "qos": "0",
@@ -212,63 +187,189 @@
         "wires": []
     },
     {
-        "id": "7d724facc36b18c8",
+        "id": "c35ff50c3ffabd4f",
+        "type": "debug",
+        "z": "639b5434064fa5cd",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "44d1d9315c897c2b",
+        "type": "function",
+        "z": "639b5434064fa5cd",
+        "name": "ParseAngleDirection",
+        "func": "var g;\ntry {\n  g=msg.payloadR.degree;\n  msg.payload=g\n    return msg;\n}\ncatch(err) {\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 320,
+        "wires": [
+            [
+                "c35ff50c3ffabd4f",
+                "949fe178da5c0457"
+            ]
+        ]
+    },
+    {
+        "id": "949fe178da5c0457",
+        "type": "mqtt out",
+        "z": "639b5434064fa5cd",
+        "name": "",
+        "topic": "brushlessCar/position2",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "28f7ceb9.8189a2",
+        "x": 920,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "68caa359c033120d",
+        "type": "ui_template",
+        "z": "639b5434064fa5cd",
+        "group": "75e0de12f03e09f3",
+        "name": "",
+        "order": 14,
+        "width": "15",
+        "height": "7",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>\n\n<html>\n    <div ng-bind-html=\"msg.payload\"></div>\n    \n<body>\n        <div id=\"left\"></div>\n        <div id=\"right\"></div>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.9.0/nipplejs.js\" integrity=\"sha512-f52aamMvYn4g3mneLwnjQycu4GnhkT8YUUFZADKR3MqoKgIKmwfLJ7vyPlNPQuh6t6xyz90gj126mF5GZjQNdw==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>\n        <script>\n        var theScope = scope;\n        \n        \n            var joystickL = nipplejs.create({\n                zone: document.getElementById('left'),\n                mode: 'static',\n                position: { left: '20%', top: '50%' },\n                color: 'green',\n                size: 100,\n                multitouch: true,\n                dynamicPage: true,\n                threshold: 0.3\n                 \n            });\n            joystickL.on('move', function (evt,data) {\n        // DO EVERYTHING\n        \n         \n         \n         theScope.send({payloadL:data.raw.position});\n         theScope.send({payloadL:data.angle});\n        \n        \n    });\n\n\n            var joystickR = nipplejs.create({\n                zone: document.getElementById('right'),\n                mode: 'static',\n                position: { left: '80%', top: '50%' },\n                color: 'red',\n                size: 100,\n                multitouch: true,\n                dynamicPage: true,\n                threshold: 0.3\n                \n            });\n            \n            joystickR.on('move', function (evt,data) {\n        // DO EVERYTHING\n        \n         \n         \n         theScope.send({payloadR:data.raw.position});\n         theScope.send({payloadR:data.angle});\n            });\n        </script>\n    </body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 260,
+        "y": 140,
+        "wires": [
+            [
+                "257fb877e4776dab",
+                "1c51586cc5843e98",
+                "44d1d9315c897c2b"
+            ]
+        ]
+    },
+    {
+        "id": "257fb877e4776dab",
+        "type": "debug",
+        "z": "639b5434064fa5cd",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "64bb08c8e4521db5",
         "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "spacer",
         "group": "75e0de12f03e09f3",
         "order": 1,
-        "width": 6,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "d5fcbf96299a9315",
+        "id": "74abe2101d6d5517",
         "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "spacer",
         "group": "75e0de12f03e09f3",
         "order": 3,
-        "width": 6,
+        "width": 7,
         "height": 1
     },
     {
-        "id": "3e5b224aeaab4b0f",
+        "id": "2593fbc668342ad3",
         "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
-        "name": "spacer",
-        "group": "75e0de12f03e09f3",
-        "order": 4,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "f85e0b51105ab907",
-        "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "spacer",
         "group": "75e0de12f03e09f3",
         "order": 5,
-        "width": 6,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "16055274cdeaa2b5",
+        "id": "2b3f6106262db6d8",
         "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "spacer",
         "group": "75e0de12f03e09f3",
         "order": 6,
-        "width": 6,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "72604ef9ecf6e702",
+        "id": "529695348bdc0548",
         "type": "ui_spacer",
-        "z": "f6f2187d.f17ca8",
+        "z": "639b5434064fa5cd",
         "name": "spacer",
         "group": "75e0de12f03e09f3",
         "order": 7,
-        "width": 6,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "c5cd9570f996954a",
+        "type": "ui_spacer",
+        "z": "639b5434064fa5cd",
+        "name": "spacer",
+        "group": "75e0de12f03e09f3",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f199f137c7ad099e",
+        "type": "ui_spacer",
+        "z": "639b5434064fa5cd",
+        "name": "spacer",
+        "group": "75e0de12f03e09f3",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4e4f259772a54c06",
+        "type": "ui_spacer",
+        "z": "639b5434064fa5cd",
+        "name": "spacer",
+        "group": "75e0de12f03e09f3",
+        "order": 10,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "ddf28fc2a11af869",
+        "type": "ui_spacer",
+        "z": "639b5434064fa5cd",
+        "name": "spacer",
+        "group": "75e0de12f03e09f3",
+        "order": 11,
+        "width": 1,
         "height": 1
     },
     {
