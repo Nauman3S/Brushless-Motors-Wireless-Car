@@ -67,9 +67,20 @@ const char wifiPass[] = "YourWiFiPass";
 const char *broker = "broker.hivemq.com";
 
 const char *topicPosition = "brushlessCar/position";
+const char *topicPosition2 = "brushlessCar/position2";
 const char *topicSpeed = "brushlessCar/speed";
 const char *topicLedStatus = "GsmClientTest/ledStatus";
 const char *topicInit = "GsmClientTest/ledStatus";
+
+String pos1;
+String pos2;
+
+String getJoystick1(){
+    return pos1;
+}
+String getJoystick2(){
+    return pos2;
+}
 
 #include <TinyGsmClient.h>
 #include <PubSubClient.h>
@@ -121,21 +132,42 @@ void mqttCallback(char *topic, byte *payload, unsigned int len)
     // Only proceed if incoming message's topic matches
     if (String(topic) == topicPosition)
     {
+        pos1=pLoad;
         if (pLoad == String("up"))
         {
-            forward();
+            // forward();
         }
         else if (pLoad == String("left"))
         {
-            left();
+            // left();
         }
         else if (pLoad == String("right"))
         {
-            right();
+            // right();
         }
         else if (pLoad == String("down"))
         {
-            stop();
+            // stop();
+        }
+    }
+    if (String(topic) == topicPosition2)
+    {
+        pos2=pLoad;
+        if (pLoad == String("up"))
+        {
+            
+        }
+        else if (pLoad == String("left"))
+        {
+            
+        }
+        else if (pLoad == String("right"))
+        {
+            
+        }
+        else if (pLoad == String("down"))
+        {
+            
         }
     }
     else if (String(topic) == topicSpeed)
@@ -177,6 +209,7 @@ boolean mqttConnect()
     SerialMon.println(" success");
     mqtt.publish(topicInit, "GsmClientTest started");
     mqtt.subscribe(topicPosition);
+    mqtt.subscribe(topicPosition2);
     mqtt.subscribe(topicSpeed);
     return mqtt.connected();
 }
